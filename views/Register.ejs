@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title%></title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+
+       <div class="authForm">
+        
+               <div class="form">
+                <form action="/user/register" method="POST">
+                    <div class="signUp_container">
+                    <h2>CREATE AN ACCOUNT</h2>
+        
+                    <% if (typeof error !== "undefined") { %>
+                    
+                        <% error.forEach(errors => { %>
+                            <div class="error" id="error" role="alert">
+                                <p><%= errors.msg %></p> 
+                               <span id="remove"> <i class="fas fa-times" id="errBtn" ></i></span>
+                            </div>
+                            
+                            <% }) %>
+                            <% } %>
+           
+                       
+                        <div class="username">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="username" required   <%= typeof username != 'undefined' ? username : "" %>>
+                            <label for="username" class="label-name">
+                                Username
+                            </label>
+                        </div>
+                    <div class="email">
+                        <i class="fas fa-envelope"></i>
+                       
+                        <input type="text" name="email" required placeholder="" id="emai" <%= typeof email != 'undefined' ? email : "" %>>
+                        <label for="email" class="label-name">
+                            Email
+                        </label>
+                    </div>
+                    <div class="password">
+                        <i class="fas fa-key"></i>
+                       
+                        <input type="password" required name="password" placeholder="" id="password">
+                        <label for="password" class="label-name">
+                            password
+                        </label>
+       
+        
+                    </div>
+                    <div class="comfirm">
+                        <i class="fas fa-key"></i>
+
+                        <input type="password"  required name="password2" placeholder="" id="comfirm">
+                        <label for="confirm password" class="label-name">
+                            Confirm password
+                        </label>
+                    </div>
+
+                    <button type="submit">Register</button>
+                    <a href="/user/login" id="already">Already a member</a>
+                </div>
+                    <div class="thirdPartyAuth loginThirdParty">
+                        <p id="continue"><span>Or</span></p>
+                        <p id="title">Signup with</p>
+                        
+                        
+                        
+                        <div class="social-icons">
+
+                              <a href="/users/facebook" title="Signup with your  facebook account"><i class="fab fa-facebook-f"></i></a>
+                              <a href="/user/google" title="Signup with your google Account"> <i class="fab fa-google"></i></a>
+                              
+                              <a href="/users/instagram" title=" Signup with your instagram account"><i class="fab fa-instagram"></i></a>   
+                            </div>
+                    </div>
+                </form>
+                         
+    
+                        
+
+               </div>
+               <div class="text">
+                   <h2>Welcome to booking</h2>
+                   
+           </div>
+        
+</body>
+
+</body>
+</html>
