@@ -154,16 +154,4 @@ exports.logOut = (req, res) =>{
 
 
 
-// //   facebook authenticate
-
-
-// UserRouter.get('/facebook',
-//   passport.authenticate('facebook', { scope : ['email'] }));
-
-// UserRouter.get('/facebook/callback',
-//   passport.authenticate('facebook', { failureRedirect: '/login' }),
-//   function(req, res) {
- 
-//     res.redirect('/');
-//   });
 

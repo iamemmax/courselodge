@@ -4,6 +4,7 @@ const LocalStrategy = require("passport-local").Strategy
 const userSchema = require("../model/User")
 const passport = require("passport")
 const  GoogleStrategy = require("passport-google-oauth20").Strategy
+const  FacebookStrategy = require("passport-facebook").Strategy
 
 
 
@@ -29,21 +30,21 @@ done(err, user);
 
 
 
-    // // facebook authentication
-    // passport.use(new FacebookStrategy({
-    //     clientID: keys.FACEBOOK_APP_ID_PRO,
-    //     clientSecret: keys.facebook_Secrete_PRO,
-    //     callbackURL: keys.callbackURL_dev,
-    //     profileFields: ['id', 'displayName', 'photos', 'email', 'name', "gender"],
-    //     enableProof: true
-    //   },
-    //   function(accessToken, refreshToken, profile, cb) {
-    //       console.log(profile);
-    //     User.findOrCreate({ facebookId: profile.id, username:profile.displayName, email:profile.emails[0].value, userImg:profile.photos[0].value, gender:profile.gender}, function (err, user) {
-    //       return cb(err, user);
-    //     });
-    //   }
-    // ));
+    // facebook authentication
+    passport.use(new FacebookStrategy({
+        clientID: process.env.FACEBOOK_APP_ID,
+        clientSecret: process.env.facebook_Secrete,
+        callbackURL: process.env.Facebook_callbackURL,
+        profileFields: ['id', 'displayName', 'photos', 'email', 'name',],
+        enableProof: true
+      },
+      function(accessToken, refreshToken, profile, cb) {
+          console.log(profile);
+        User.findOrCreate({ facebookId: profile.id, username:profile.displayName, email:profile.emails[0].value, password:profile.displayName}, function (err, user) {
+          return cb(err, user);
+        });
+      }
+    ));
     
 
 

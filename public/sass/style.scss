@@ -1,0 +1,353 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$primary: #286076;
+$secondary: #131921;
+.authForm{
+   height: 100vh;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background: linear-gradient(rgba(24, 23, 23, 0.74), rgba(8, 8, 8, 0.671)), url(../../img/product/4.jpg)no-repeat;
+   background-size: cover;
+   background-position: center;
+   position: relative;
+   
+
+   > div{
+       width: 48%;
+       height: 100vh;
+       z-index: 9;
+      
+   }
+
+   &::after{
+    position: absolute;
+    content: "";
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: .7;
+   }
+
+
+
+   .form{
+       background-color: #fff;
+    //    border: 2px solid rgb(29, 2, 80);
+    width: 400px;
+    // padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-flow: row wrap;
+    overflow: auto;
+
+
+    form {
+
+        
+        margin-top: 2rem;
+        width: 90%;
+        margin: 0px auto;
+        position: relative;
+        .signUp_container{
+        h2{
+            text-align: center;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            text-transform: capitalize;
+            padding: 10px;
+            font-size: 28px;
+        }
+
+        input{
+            width: 100%;
+            margin-top: 30px;
+            height: 45px;
+            border: none;
+            outline: none;
+            background-color: rgb(247, 247, 247);
+            display: block;
+            padding-left: 35px;
+           
+            
+           
+        }
+        label{
+            position: absolute;
+            left: 0;
+            width: 100%;
+            /* background-color: red; */
+            padding: 10px 40px;
+            height: 45px;
+            margin-top: -40px;
+            font-size: 14px;
+            pointer-events: none;
+            transition: transform .5s ease;
+            font-family: 'Roboto', sans-serif;
+
+            
+           
+            &::after{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                
+                
+                left: 0;
+            }
+
+            
+            
+            
+        }
+        input:focus + label,
+        input:valid + label
+        {
+            text-transform: capitalize;
+            font-size:16px;
+            transform: translateY(-110%);
+            padding: 20px 0;
+           
+        }
+       
+        
+           
+              
+         i{
+            position: absolute;
+            margin-top: 1rem;
+            left: .7rem;
+        }
+
+        button{
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            width: 100%;
+            outline: none;
+            height: 45px;
+            background: $secondary;
+            color: #fff;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: lighten($secondary, 10%);
+            color: #eee;
+            transition: all .5s ease;
+        }       
+
+        #already{
+            text-decoration: none;
+            padding: 20px 10px;
+            display: block;
+            float: right;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: color .5s ease;
+
+            &:hover{
+                color: $secondary;
+            }
+        }
+    }
+ 
+           
+    
+    
+    
+   }
+
+   
+  
+.loginThirdParty{
+    margin-top: 6rem !important;
+}
+.forget{
+position: absolute;
+left: 0;
+}
+
+
+}
+
+.error{
+    width: 100%;
+    background-color: $secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    margin-top: 3px;
+    
+    p{
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+    }
+    #remove{
+        position: relative;
+    
+    #errBtn{
+        background-color: unset;
+      z-index: 9;
+      position: absolute;
+      top: -30px;
+        left: -2rem;
+       font-size:25px;
+       cursor: pointer;
+       color: lighten(red, 1%);
+       border: none;
+       width: 30px;
+       height: 30px;
+       text-align: center;
+       
+       
+       
+    }
+        
+    }
+}
+.removeErr{
+    display: none;
+}
+
+}
+
+.thirdPartyAuth{
+    position: relative;
+    margin-top: 1rem !important;
+    
+
+    #continue{
+        // margin-top: 4rem;
+        border-bottom: 2px solid #222;
+        width: 100%;
+    }
+    span{
+        position: absolute;
+        text-transform: uppercase;
+        text-align: center;
+        width: 40px;
+        left: 50%;
+        margin: 0px auto;
+        margin-top: -7px;
+        z-index: 9;
+        background-color: #fff;
+        transform: translate(-50%, -10%);
+        font-weight: 900;
+    }
+    #title{
+        text-align: center;
+        padding: 10px;
+        font-weight: 600;
+        width: 40%;
+        margin: 0px auto;
+        font-family: 'Poppins', sans-serif;
+        background-color: darken($primary,10%);
+        margin-top: 1.5rem;
+        color: #fff;
+        text-transform: uppercase;
+
+        @media screen and (max-width:1000px) {
+           width:55%;
+            
+        }
+        }
+   
+.social-icons{
+
+width: 60%;
+// height: 50px;
+display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+margin: 0px auto;
+margin-top: 15px;
+position: relative;
+margin-bottom: 1rem;
+
+
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    align-items: center;
+    margin: 0px auto;
+    text-decoration: none;
+    color: #fff;
+    clear: both;
+    
+    
+    i{
+        background-color: $secondary;
+        width: 30px;
+        height:30px;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+        border-radius: 100%;
+        background-color:darken($secondary,10%)
+
+
+    }
+}
+
+
+}
+        
+ }
+ .text{
+     flex: 2;
+    
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+
+     h2{
+        color: #fff;
+        font-size: 50px;
+        font-family: 'Poppins', sans-serif;
+     }
+ @media screen and (max-width:1000px) {
+         display: none;
+     }
+ }
+
+ @media screen and (max-width:1000px) {
+     .form{
+       width: 100% !important;
+       padding: 10px 20px;
+
+       h2{
+           font-size: 20px !important;
+       }
+     }
+
+ }
+
+
+
+
+

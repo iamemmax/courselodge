@@ -31,4 +31,19 @@ userRouter.get('/google/callback',
     res.redirect('/');
 
   });
+
+
+  
+// //   facebook authenticate
+
+
+userRouter.get('/facebook',
+  passport.authenticate('facebook', { scope : ['email'] }));
+
+userRouter.get('/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/user/login' }),
+  function(req, res) {
+ 
+    res.redirect('/');
+  });
 module.exports =  userRouter;
