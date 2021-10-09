@@ -218,7 +218,7 @@ exports.getForm = (req, res) => {
   });
 };
 exports.getSuccess = (req, res) => {
-  res.render("Success", {
+  res.render("success", {
     title: "success",
     users: req.user,
   });
