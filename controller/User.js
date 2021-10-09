@@ -195,7 +195,7 @@ exports.postUser = async (req, res) => {
 exports.generateReport = (req, res) =>{
   const option = {format:"A4"}
   
-  res.render("download",{user:req.user}, (err, html) =>{
+  res.render("Download",{user:req.user}, (err, html) =>{
     pdf.create(html, option).toFile("./docs/report.pdf", (err, data) =>{
       if(err) 
        console.log(err);
@@ -212,13 +212,13 @@ exports.generateReport = (req, res) =>{
 }
 
 exports.getForm = (req, res) => {
-  res.render("account", {
+  res.render("Account", {
     title: "User Form",
     user: req.user,
   });
 };
 exports.getSuccess = (req, res) => {
-  res.render("success", {
+  res.render("Success", {
     title: "success",
     users: req.user,
   });
