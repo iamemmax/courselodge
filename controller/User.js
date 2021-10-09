@@ -195,7 +195,7 @@ exports.postUser = async (req, res) => {
 exports.generateReport = (req, res) =>{
   const option = {format:"A4"}
   
-  res.render("Download",{user:req.user}, (err, html) =>{
+  res.render("download",{user:req.user}, (err, html) =>{
     pdf.create(html, option).toFile("./docs/report.pdf", (err, data) =>{
       if(err) 
        console.log(err);

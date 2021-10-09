@@ -48,6 +48,75 @@ app.get("/", async (req, res) =>{
         user:req.user
     })
 })
+// register new user
+exports.newUser = async (req, res) => {
+  let error = [];
+  let { username, email, password, password2 } = req.body;
+
+  // if user leave any of the field empty
+  if (!username || !email || !password || !password2) {
+    error.push({ msg: "please fill all field" });
+  }
+
+  // check if password match
+  if (password != password2) {
+    error.push({ msg: "password not match" });
+  }
+  if (password.length > 0 && password.length < 5) {
+    error.push({ msg: "password too weak" });
+    console.log("password too weak");
+  }
+  // check if user enter a valid email
+  function validateEmail(email) {
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(email);
+  }
+  if (!validateEmail(email)) {
+    error.push({ msg: "please enter a valid email" });
+  }
+
+  // check if username  is already registered
+  let userNameExist = await userSchema.findOne({ username: username });
+  if (userNameExist) {
+    error.push({ msg: "username already Exist" });
+  }
+  let emailExist = await userSchema.findOne({ email: email });
+  if (emailExist) {
+    error.push({ msg: "email already Exist" });
+  }
+
+  // re-rendering the signup page incase of any error
+  if (error.length > 0) {
+    res.render("Register", {
+      title: "Register Account",
+      error,
+    });
+  } else {
+    let newUser = await new userSchema({
+      username,
+      email,
+      password,
+    });
+    
+
+    await newUser.save((error, save) => {
+      if (error){
+        res.render("Register", {
+          keyword: "register Account  signup Account",
+          error,
+        });
+      }
+      if (save) {
+        // res.send(`welcome to booking ${username}`)
+
+        console.log(save);
+        res.redirect("/")
+        
+      }
+    });
+  }
+};
 
 // connect to databse
 mongoose.connect(process.env.db_connect, {
