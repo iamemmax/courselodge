@@ -5,8 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <link rel="stylesheet" href="/css/homepage.css">
+
 </head>
 <body>
-    
+    <div class="container">
+        <div class="video__container">
+          <video
+            src="./video/(Tubidy.io)GREAT AND MIGHTY - JIMMY D PSALMIST. OFFICIAL VIDEO(1).mp4"
+            autoplay
+            muted
+            loop
+          ></video>
+        </div>
+  
+        <div class="wrapper__container">
+          <header>
+            <nav>
+              <div class="logo">
+                <h1 class="text-secondary">Courselodge</h1>
+              </div>
+              <ul>
+                <li class="active text-danger"><a href="#">Home</a></li>
+                
+                <% if (user) { %>
+                    <li><a href="/user/account/<%= user.id %> ">Profile</a></li>
+                    <li><a href="/user/logout ">Logout</a></li>
+                 
+                <% } else{%>
+                    <li><a href="/user/register ">Register</a></li>
+                    <li><a href="/user/login ">Login</a></li>
+
+                    <% } %> 
+              </ul>
+              <div class="menu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </nav>
+          </header>
+  
+          <div class="banner">
+            <div class="left__banner">
+              <h2> Web Developer Task </h2>
+              <p>
+                I,m Emmanuel, Professional <span class="show__skill"></span> with
+                long time experience in this field​.
+              </p>
+              <div class="link">
+                <% if (user) { %>
+                    <a href="/user/account/<%= user.id %> ">Get Started</a>
+                <% }else{ %>
+                    <a href="/user/login">Get Started</a>
+                    <% } %> 
+              </div>
+            </div>
+            <div class="right__banner">
+              <img src="../././Web_Developer_VectorForFree-removebg-preview.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src=".././/js//main.js"></script>
 </body>
 </html>

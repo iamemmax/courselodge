@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <link rel="stylesheet" href="/css/pdf.css">
+
+
+
+<style>
+    .userForm{
+        position: relative;
+    }
+    .userForm h2{
+        text-align: center;
+        color: red;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+        
+
+
+    }
+    p{
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        padding: 10px 20px;
+        font-weight: 700;
+
+    }
+    span{
+        margin-left: 2rem;
+        font-weight: 300;
+        position: absolute;
+        left: 9rem;
+    }
+    .profileImg{
+        border: 2px solid;
+        height: 100px;
+        width: 150px;
+        position: absolute;
+        right: 10rem;
+        overflow: hidden;
+        top: 5rem;
+    }
+    .profileImg img{
+        width: 100%;
+    }
+    .user{
+        width: 90%;
+        margin: 0px auto;
+        margin-top: 4rem;
+    }
+    #signature{
+        width: 70px;
+    }
+</style>
+</head>
+<body>
+ 
+
+    
+    <div class="userForm">
+        <h2>User Registration Form</h2>
+        <div class="user">
+            <p>Firstname: <span><%= user.firstname %> </span></p>
+            <p>Lastname: <span><%= user.lastname %> </span></p>
+           <div class="profileImg">
+            <img src="http://localhost:3000/img/<%= user.profileImg %> " alt="">
+           </div>
+           <p>Username: <span><%= user.username %> </span></p>
+           <p>Email: <span><%= user.email %> </span></p>
+           <p>D.O.B: <span><%= user.dob %> </span></p>
+           <p>Gender: <span><%= user.gender %> </span></p>
+           <p>Phone: <span>0<%= user.phone %> </span></p>
+           <p>Country: <span><%= user.country %> </span></p>
+           <p>State: <span><%= user.state %> </span></p>
+           <p>Local Govt.: <span><%= user.lg %> </span></p>
+           <p>Address: <span><%= user.address %> </span></p>
+           <p>Signature: <span><img  id="signature" src="http://localhost:3000/img/<%= user.signature %> " alt=""></span></p>
+
+        </div>
+    </div>
+</body>
+</html>

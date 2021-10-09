@@ -1,0 +1,32 @@
+$color:(
+bg:#22212c,
+light__bg:#2c2c37,
+primary:#ffc107,
+primary__dark:#c49b66,
+secondary:#f44336,
+accent:#4caf50,
+light:#64b5f6,
+danger:red,
+white:#fff
+);
+
+
+@function mycolor($back){
+    @return map-get($color , $back );
+}
+
+@each $colors, $value in $color {
+    .text-#{$colors}{
+        color: $value;
+    }
+    .bg-#{$colors}{
+        background-color: $value;
+    }
+}
+
+:root{
+    @each $colors, $value in $color {
+        --#{$colors}: #{$value};
+    }
+}
+

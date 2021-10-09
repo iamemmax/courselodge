@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap");
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
+.Account { height: 100vh; width: 100%; background: linear-gradient(rgba(24, 23, 23, 0.74), rgba(8, 8, 8, 0.671)), url("https://images.unsplash.com/photo-1633114127451-558041183c3b?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw1MHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60") no-repeat; background-repeat: no-repeat; background-size: cover; position: relative; z-index: 5; padding: 10px; overflow: auto; }
+
+.Account .myform { background-color: #fff; z-index: 9; margin: 0px auto; width: 500px; height: auto; padding: 10px; max-width: 100%; border-radius: 5px; position: relative; }
+
+.Account .myform form { width: 90%; margin: 0px auto; height: 100%; }
+
+.Account .myform h2 { text-align: center; font-family: 'Poppins', sans-serif; text-transform: capitalize; font-size: 30px; padding: 20px; text-transform: uppercase; }
+
+.Account .myform label { padding: 20px 0px; font-weight: 500; font-family: 'Poppins', sans-serif; font-size: 16px; }
+
+.Account .myform input[type="text"], .Account .myform input[type="email"], .Account .myform input[type="date"], .Account .myform select, .Account .myform input[type="file"] { width: 100%; height: 45px; padding: 10px; border: none; background-color: #eee; outline: none; border-radius: 5px; margin-top: 5px; font-family: 'Poppins', sans-serif; }
+
+.Account .myform .cv span { text-align: center; font-size: 14px; color: red; font-weight: 500; width: 100% !important; display: block; font-style: italic; font-family: 'Poppins', sans-serif; }
+
+.Account .myform input[type="radio"] { padding: 10px; margin: 10px; text-transform: capitalize; font-size: 16px; }
+
+.Account .myform p { font-family: 'Poppins', sans-serif; }
+
+.Account .myform textarea { width: 100%; height: 50px; background-color: #eee; outline: none; border: none; padding: 10px; font-family: 'Poppins', sans-serif; }
+
+.Account .myform button { width: 100%; height: 45px; background-color: #286076; outline: none; border: none; color: #fff; font-family: 'Poppins', sans-serif; font-size: 16px; margin-top: 10px; border-radius: 5px; transition: background .5s; cursor: pointer; }
+
+.Account .myform button:hover { background-color: #357f9c; }
+
+.profile { position: relative; width: 100%; height: 100vh; background: black; z-index: 5; display: flex; justify-content: center; align-items: center; padding: 10px; }
+
+.profile .success { width: 500px; max-width: 100%; height: 300px; background-color: #fff; border-radius: 5px; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+
+.profile .success h2 { font-family: 'Poppins', sans-serif; font-size: 20px; padding: 10px; text-align: center; }
+
+.profile .success p { font-family: 'Poppins', sans-serif; padding: 10px; font-size: 14px; width: 80%; text-align: center; }
+
+.profile .success button { width: 150px; height: 45px; background-color: #286076; outline: none; border: none; color: #fff; font-family: 'Poppins', sans-serif; font-size: 16px; margin-top: 10px; border-radius: 5px; transition: background .5s; cursor: pointer; }
+
+.profile .success button:hover { background-color: #1b4150; }

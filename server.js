@@ -7,7 +7,7 @@ const session = require("express-session")
 const passport = require("passport")
 const LocalStrategy = require('passport-local').Strategy;
 const userRouter = require("./routes/UserRoute")
-
+const methodOverride = require("method-override")
 
 
 const app = express()
@@ -17,8 +17,10 @@ const app = express()
 app.use(cors())
 app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+app.use(methodOverride("_method"))
 
 app.use(session({
     secret:"emmalex",
@@ -42,7 +44,9 @@ app.get("/", async (req, res) =>{
 
    
     
-    res.send("welcome")
+    res.render("index",{
+        user:req.user
+    })
 })
 
 // connect to databse

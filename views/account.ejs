@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%-title %> </title>
+    <link rel="stylesheet" href="/css/account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+</head>
+<body>
+
+    <div class="Account">
+  
+        <div class="myform">
+    <form action="/user/account/<%=user.id%>?_method=PUT" enctype="multipart/form-data" method="POST">
+<h2>Registration form</h2>
+
+    <div class="firstname">
+
+        <label for="firstname" class="label-name">
+            Firstname
+        </label><br>
+        <input type="text"  name="firstname" placeholder="Firstname" required value="<%= user.firstname ? user.firstname : "" %> "   <%= typeof firstname != 'undefined' ? firstname : "" %> >
+    </div>
+    <div class="lastname">
+        <label for="lastname" class="label-name">
+            Lastname
+        </label> <br>
+
+        <input type="text"   name="lastname" required value="<%= user.lastname ? user.lastname : "" %> "   placeholder="Lastname" <%= typeof lastname != 'undefined' ? lastname : "" %>>
+    </div>
+
+    <div class="username">
+        <label for="username" class="label-name">
+            Username
+        </label><br>
+
+        <input type="text" value="<%=user.username  %> "  required placeholder="username" name="username"    <%= typeof username != 'undefined' ? username : "" %>>
+    </div>
+    <div class="email">
+        <label for="email" class="label-name">
+            Email
+        </label> <br>
+
+        <input type="text" value="<%=user.email  %> "  name="email"  required  <%= typeof email != 'undefined' ? email : "" %>>
+    </div>
+ 
+    <div class="dob">
+        <label for="email" class="label-name">
+            D.O.B
+        </label> <br>
+
+        <input type="date"  name="dob"  value="<%= user.dob ? user.dob : "" %>" required <%= typeof dob != 'undefined' ? dob : "" %>>
+    </div>
+    <div class="phone">
+        <label for="phone" class="label-name">
+            Phone Number
+        </label> <br>
+
+        <input type="text"  name="phone"  maxlength="11"  value="0<%= user.phone ? user.phone : "" %>" required placeholder="phone Number" <%= typeof phone != 'undefined' ? phone : "" %> >
+    </div>
+    <div class="profileImg">
+        <label for="phone" class="label-name">
+            Profile Img
+        </label>
+
+        <input type="file"  name="profileImg" requied accept="image/png, image/jpeg, image/png" caption="user"   >
+        
+    </div>
+ 
+    <div class="gender">
+        <label for="phone" class="label-name">
+           Gender
+        </label><br>
+       <span> Male</span><input type="radio" name="gender" <%= user.gender == 'male' ? 'checked' : ""%> value="male">
+        <span>Female</span><input type="radio" name="gender" <%= user.gender == 'female' ? 'checked' : ""%> value="female">
+        <span>Other</span><input type="radio" name="gender" <%= user.gender == 'other' ? 'checked' : ""%> value="other">
+    </div>
+    <div class="contact" id="form2">
+        
+        <div class="country">
+            <label for="country">country</label><br>
+            <select id="west-africa" name="country" required class="form-control"> 
+                <option selected="">country</option> 
+                <option value="benin"  <%= user.country == 'benin' ? 'selected' : ""%>>Benin</option> 
+                <option value="burkina-faso"  <%= user.country == 'burkina-faso' ? 'selected' : ""%>>Burkina Faso</option> 
+                <option value="cape-verde"  <%= user.country == 'cape-verde' ? 'selected' : ""%>>Cape Verde</option> 
+                <option value="ivory-coast"  <%= user.country == 'ivory-coast' ? 'selected' : ""%>>Cote dIvoire</option> 
+                <option value="gambia"  <%= user.country == 'gambia' ? 'selected' : ""%>>Gambia</option> 
+                <option value="ghana"  <%= user.country == 'ghana' ? 'selected' : ""%>>Ghana</option> 
+                <option value="guinea"  <%= user.country == 'guinea' ? 'selected' : ""%>>Guinea</option> 
+                <option value="guinea-bissau" <%= user.country == 'guinea-bissau' ? 'selected' : ""%>>Guinea-Bissau</option> 
+                <option value="liberia"  <%= user.country == 'liberia' ? 'selected' : ""%>>Liberia</option> 
+                <option value="mali"  <%= user.country == 'mali' ? 'selected' : ""%>>Mali</option> 
+                <option value="mauritania"  <%= user.country == 'mauritania' ? 'selected' : ""%>>Mauritania</option> 
+                <option value="niger"  <%= user.country == 'niger' ? 'selected' : ""%>>Niger</option> 
+                <option value="nigeria"  <%= user.country == 'nigeria' ? 'selected' : ""%>>Nigeria</option> 
+                <option value="saint-helena"  <%= user.country == 'saint-helena' ? 'selected' : ""%>>Saint Helena</option> 
+                <option value="senegal"  <%= user.country == 'senegal' ? 'selected' : ""%>>Senegal</option> 
+                <option value="sierra-leone"  <%= user.country == 'sierra-leone' ? 'selected' : ""%>>Sierra Leone</option> 
+                <option value="sao-Tome and Principe"  <%= user.country == 'sao-Tome and Principe' ? 'selected' : ""%>>Sao Tome and Principe</option> 
+                <option value="togo"  <%= user.country == 'togo' ? 'selected' : ""%>>Togo</option> 
+                </select> 
+            </div>
+
+
+            <div class="state">
+              <label for="state">State</label><br>
+                <select id="west-africa" name="state" class="form-control" required> 
+                    <option disabled selected=" ">--Select State--</option>
+                    <option value="Abia" <%= user.state == 'Abia' ? 'selected' : ""%> >Abia</option>
+                    <option value="Adamawa"   <%= user.state == 'Adamawa' ? 'selected' : ""%>>Adamawa</option>
+                    <option value="Akwa Ibom"  <%= user.state == 'Akwa Ibom' ? 'selected' : ""%>>Akwa Ibom</option>
+                    <option value="Anambra"   <%= user.state == 'Anambra' ? 'selected' : ""%>>Anambra</option>
+                    <option value="Bauchi"   <%= user.state == 'Bauchi' ? 'selected' : ""%>>Bauchi</option>
+                    <option value="Bayelsa"  <%= user.state == 'Bayelsa' ? 'selected' : ""%> >Bayelsa</option>
+                    <option value="Benue"    <%= user.state == 'Benue' ? 'selected' : ""%>>Benue</option>
+                    <option value="Borno"  <%= user.state == 'Borno' ? 'selected' : ""%>>Borno</option>
+                    <option value="Cross River"  <%= user.state == 'Cross River' ? 'selected' : ""%>>Cross River</option>
+                    <option value="Delta"  <%= user.state == 'Delta' ? 'selected' : ""%>>Delta</option>
+                    <option value="Ebonyi"  <%= user.state == 'Ebonyi' ? 'selected' : ""%>  >Ebonyi</option>
+                    <option value="Edo"    <%= user.state == 'Edo' ? 'selected' : ""%> >Edo</option>
+                    <option value="Ekiti"  <%= user.state == 'Ekiti' ? 'selected' : ""%>>Ekiti</option>
+                    <option value="Enugu"  <%= user.state == 'Enugu' ? 'selected' : ""%>>Enugu</option>
+                    <option value="FCT"  <%= user.state == 'FCT' ? 'selected' : ""%>>Federal Capital Territory</option>
+                    <option value="Gombe"  <%= user.state == 'Gombe' ? 'selected' : ""%>>Gombe</option>
+                    <option value="Imo"  <%= user.state == 'Imo' ? 'selected' : ""%>>Imo</option>
+                    <option value="Jigawa"  <%= user.state == 'Jigawa' ? 'selected' : ""%>>Jigawa</option>
+                    <option value="Kaduna"  <%= user.state == 'Kaduna' ? 'selected' : ""%>>Kaduna</option>
+                    <option value="Kano"  <%= user.state == 'Kano' ? 'selected' : ""%>>Kano</option>
+                    <option value="Katsina"  <%= user.state == 'Katsina' ? 'selected' : ""%>>Katsina</option>
+                    <option value="Kebbi"  <%= user.state == 'Kebbi' ? 'selected' : ""%>>Kebbi</option>
+                    <option value="Kogi"  <%= user.state == 'Kogi' ? 'selected' : ""%>>Kogi</option>
+                    <option value="Kwara"  <%= user.state == 'Kwara' ? 'selected' : ""%>>Kwara</option>
+                    <option value="Lagos"  <%= user.state == 'Lagos' ? 'selected' : ""%>>Lagos</option>
+                    <option value="Nasarawa"  <%= user.state == 'Nasarawa' ? 'selected' : ""%>>Nasarawa</option>
+                    <option value="Niger"  <%= user.state == 'Niger' ? 'selected' : ""%>>Niger</option>
+                    <option value="Ogun"  <%= user.state == 'Ogun' ? 'selected' : ""%>>Ogun</option>
+                    <option value="Ondo"  <%= user.state == 'Ondo' ? 'selected' : ""%>>Ondo</option>
+                    <option value="Osun  <%= user.state == 'Osun' ? 'selected' : ""%>">Osun</option>
+                    <option value="Oyo"  <%= user.state == 'Oyo' ? 'selected' : ""%>>Oyo</option>
+                    <option value="Plateau"  <%= user.state == 'Plateau' ? 'selected' : ""%>>Plateau</option>
+                    <option value="Rivers"  <%= user.state == 'Rivers' ? 'selected' : ""%>>Rivers</option>
+                    <option value="Sokoto"  <%= user.state == 'Sokoto' ? 'selected' : ""%>>Sokoto</option>
+                    <option value="Taraba"  <%= user.state == 'Taraba' ? 'selected' : ""%>>Taraba</option>
+                    <option value="Yobe"  <%= user.state == 'Yobe' ? 'selected' : ""%>>Yobe</option>
+                    <option value="Zamfara"  <%= user.state == 'Zamfara' ? 'selected' : ""%>>Zamfara</option>
+            </select>
+        
+        </div>
+
+        <div class="cv">
+            <label for="cv">upload cv</label><br>
+            <input type="file" requred  name="cv" accept="application/pdf, application/doc"   >
+            <span>only pdf and doc allowed</span>
+        </div>
+        <div class="lg">
+            <label for="lg">local Govt.</label><br>
+            <input type="text" required name="lg" id="lg" placeholder="local government" value="<%=user.lg %>">
+        </div>
+        <div class="contact">
+            <label for="address">Address</label><br>
+            <textarea required name="address" id="address"  rows="10"><%=user.address%> </textarea>
+        </div>
+
+        
+    <!-- </form> -->
+</div>
+<div class="signature">
+    <label for="signature">signature</label><br>
+    <input type="file" name="signature" accept="image/png, image/jpeg, image/png" reqired   >
+</div>
+
+
+<button type="submit">Submit</button>
+
+</form>
+</div>
+ 
+</div>
+
+</body>
+</html>

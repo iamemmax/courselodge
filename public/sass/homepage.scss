@@ -1,0 +1,357 @@
+@import "color";
+@import "config";
+
+body {
+  background-color: mycolor(bg);
+  display: flex;
+  flex-direction: column;
+  
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .video__container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-image: url("../img/1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+    background-size: 100%;
+
+    @include pseudo($loc:after){
+    
+      width: 100%;
+      background-color: rgba(34, 33, 44, 0.91);
+      z-index: 2;
+      height: 100%;
+    }
+
+    video {
+      min-height: 100%;
+      min-width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+
+
+
+.wrapper__container {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  height: 100%;
+  top: 0;
+  z-index: 3;
+  color: #fff;
+  
+  @include mobile(300px, 768px){
+    width: 100%;
+    left: 0;
+  }
+
+  .fixedNav{
+    background-color: mycolor(light__bg);
+    position: fixed;
+    left: 0;
+    width: 100%;
+    padding: 0px 70px;
+    transition: position .5s ease;
+    z-index: 999;
+    @include mobile(300px, 768px){
+    padding: 0px 10px;
+
+    }
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 10px;
+    z-index: 4;
+    @include mobile (300px, 768px){
+    border-bottom: 1px solid rgba(238, 238, 238, 0.274);
+    }
+
+  }
+
+  .logo{
+    z-index: 4;
+  }
+  .logo h1 {
+    font-size: 30px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+
+    @include mobile (300px, 768px){
+      position: fixed;
+      display: block;
+      height: 90vh;
+      text-align: center;
+      background-color: mycolor(light__bg);
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      z-index: 3;
+      transition: transform .5s ease-in;
+      transform: translate(-100%, -100%);
+      transform-origin: top right;
+    }
+
+  }
+    .show__nav{
+      transform: translate(0%, 0%) !important;
+      transform-origin: bottom left;
+
+    }
+  
+    a {
+    margin: 10px 15px;
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #eee;
+    font-weight: 600;
+    position: relative;
+
+
+    
+    @include mobile(300px, 768px){
+      line-height: 80px;
+      width: 100% !important;
+      display: block;
+      // border: 2px solid red;
+      margin-left: 0;
+    }
+
+   @include pseudo($loc:after, $bottom:-10px){
+      
+      border-bottom: 2px solid mycolor(secondary);
+      transition: width 0.5s ease-in;
+      width: 0;
+
+      @include mobile (300px, 768px){
+        margin-bottom: 1px !important;
+      }
+    }
+    &:hover::after {
+      width: 100%;
+     
+    }
+    
+  }
+  .menu {
+    // border: 2px solid mycolor(secondary);
+    padding: 10px;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+
+    @include mobile('300px', '768px'){
+      display: flex;
+      z-index: 4;
+    }
+
+    span {
+      width: 30px;
+      height: 3px;
+      background-color: #fff;
+    }
+  }
+}
+
+
+
+
+.active a{
+   
+      color: mycolor(secondary);
+      
+    
+    }
+.banner {
+  width: 100%;
+  height: 550px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  align-items: center;
+  flex-flow: row wrap;
+  
+  @include mobile(300px, 768px){
+//  display: block;
+flex-direction: column;
+
+    height: 500px;
+  }
+
+  > div {
+    width: 46%;
+    margin: 0px 10px;
+    height: 600px;
+    
+    @include mobile(300px, 768px){
+      // border: 2px solid red;
+        width: 100%;
+        margin: 0;
+        height: 400px;
+    }
+  }
+  .left__banner {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    @include mobile(300px, 768px){
+      flex: 1;
+    }
+
+    h2 {
+      font-size: 65px;
+      font-family: sans-serif;
+      letter-spacing: 1;
+      width: 100%;
+      line-height: 65px;
+      margin-bottom: 10px;
+
+      @include mobile(300px, 768px){
+        font-size: 50px;  
+        text-align: center;
+      }
+    }
+    p {
+      width: 86%;
+      font-size: 22px;
+      color: rgba(238, 238, 238, 0.671);
+      line-height: 50px;
+      opacity: 0.8;
+
+
+      @include mobile(300px, 768px){
+        width: 90%;
+        text-align: center;
+        font-size: 18px;
+      line-height: 40px;
+
+      }
+    }
+    span {
+      color: mycolor(secondary);
+      position: relative;
+      font-weight: 900;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      //   padding: 0px 5px;
+
+      &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        border-right: 2px solid mycolor(secondary);
+        width: 100%;
+        height: 100%;
+        animation: blink 0.5s infinite;
+      }
+      
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+
+    .link {
+      position: relative;
+      margin-top: 20px;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+
+
+      @include mobile(300px, 768px){
+        
+        position: absolute;
+        left: 50%;
+        top: 75%;
+        background-color: black;
+        transform: translate(-50%, -50%);
+      
+      }
+
+      > a {
+        padding: 15px 25px;
+        margin: 0;
+        border-radius: 4px;
+        position: relative;
+        background-color: mycolor(secondary);
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        
+
+        &::after {
+          position: absolute;
+          content: "Hire me";
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+          background-color: lighten(mycolor(secondary), 5%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: translateY(-100%);
+          transition: transform 0.5s ease-in;
+        }
+
+        &:hover::after {
+          transform: translateY(0%);
+        }
+      }
+    }
+  }
+  .right__banner {
+    flex: 2;
+    height: 100%;
+    background-attachment: fixed;
+    // border: 2px solid mycolor(secondary)
+@include mobile(300px, 768px){
+        display: none;
+      }
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+      background-blend-mode: color;
+
+      
+    }
+  }
+}
+

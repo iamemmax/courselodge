@@ -1,0 +1,195 @@
+@use 'sass:math';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+::-webkit-scrollbar {
+  // display: none;
+}
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+
+
+@mixin mobile($size...) {
+  @if length($size) == 1 {
+    @media screen and (max-width: $size) {
+      @content;
+    }
+  }
+  @if length($size) == 2{
+    @media screen and (min-width: nth($size, 1)) and (max-width: nth($size, 2)) {
+        @content;
+      }
+    }
+  }
+
+
+  // $spacings: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20);
+
+  // @each $space in $spacings {
+  //   .m-#{$space}{
+  //     margin: #{$space}rem;
+  //   }
+  //   .mt-#{$space}{
+  //     margin-top: #{$space}rem;
+  //   }
+  //   .mb-#{$space}{
+  //     margin-bottom: #{$space}rem;
+  //   }
+  //   .my-#{$space}{
+  //     margin:  #{$space}rem 0;
+  //   }
+  //   .mx-#{$space}{
+  //     margin: 0 #{$space}rem;
+  //   }
+  // }
+  
+
+
+
+$base-margin : 0.75rem;
+
+$utilities:(
+  "margin":(
+    "prefix" : "m",
+  "values" :(
+    "0" : 0,
+    "1" : $base-margin,
+    "2" : $base-margin * 2,
+    "3" : $base-margin * 4 ,
+    "4" : $base-margin * 6 ,
+    "5" : $base-margin *  8
+  )
+  ),
+
+  "margin-left":(
+    "prefix" : "ml",
+  "values" :(
+    "0" : 0,
+    "1" : $base-margin,
+    "2" : $base-margin * 2,
+    "3" : $base-margin * 4 ,
+    "4" : $base-margin * 6 ,
+    "5" : $base-margin *  8
+  )
+  ),
+  "margin-right":(
+    "prefix" : "mr",
+  "values" :(
+    "0" : 0,
+    "1" : $base-margin,
+    "2" : $base-margin * 2,
+    "3" : $base-margin * 4 ,
+    "4" : $base-margin * 6 ,
+    "5" : $base-margin *  8
+  )
+  ),
+  "margin-bottom":(
+    "prefix" : "mb",
+  "values" :(
+    "0" : 0,
+    "1" : $base-margin,
+    "2" : $base-margin * 2,
+    "3" : $base-margin * 4 ,
+    "4" : $base-margin * 6 ,
+    "5" : $base-margin *  8
+  )
+  ),
+  "margin-top":(
+    "prefix" : "mt",
+  "values" :(
+    "0" : 0,
+    "1" : $base-margin,
+    "2" : $base-margin * 2,
+    "3" : $base-margin * 4 ,
+    "4" : $base-margin * 6 ,
+    "5" : $base-margin *  8
+  )
+  ),
+
+  "padding":(
+    "prefix" : "px",
+  "values" :(
+    "0" : 0,
+    "1" : 0 $base-margin,
+    "2" : 0 $base-margin * 2,
+    "3" : 0px $base-margin * 4 ,
+    "4" : 0px $base-margin * 6 ,
+    "5" :0px  $base-margin *  8
+  )
+  ),
+
+  "opacity" :(
+    "prefix" : "o",
+    "values":(
+      "0" : 0,
+      "10" : 0.1,
+      "20" : 0.2,
+      "30" : 0.3,
+      "40" : 0.4,
+      "50" : 0.5,
+      "60" : 0.6,
+      "70" : 0.7,
+      "80" : 0.8,
+      "90" : 0.9,
+      "100" : 1,
+    )
+  )
+
+);
+
+@each $key, $val in $utilities {
+  $prefix:map-get($val, "prefix");
+  $value:map-get($val, "values");
+
+  @each $k, $i in $value {
+    
+    .#{$prefix}-#{$k}{
+      
+      #{$key}: $i;
+    }
+    
+  }
+
+ 
+  
+}
+
+
+
+  @mixin pseudo($pos:absolute, $loc:before, $top:0, $left:0, $right:0, $bottom:0, $content:"") {
+    &::#{$loc}{
+      position: $pos;
+      top:$top;
+      content: $content;
+      bottom: $bottom;
+      left: $left;
+      right: $right;
+      @content;
+    }
+  };
+
+  $justify: space-around, center, space-between, space-evenly;
+  $display: none, flex, grid, block;
+
+  // j-center
+  @each $key in $justify {
+      .j-#{$key}{
+        justify-content: $key;
+      }
+  };
+  @each $key in $display {
+      .d-#{$key}{
+        display: $key;
+      }
+  };

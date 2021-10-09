@@ -2,6 +2,11 @@ const express = require("express");
 const userSchema = require("../model/User");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const multer = require("multer");
+const ejs = require("ejs")
+const pdf = require("html-pdf")
+const path = require("path");
+const fs = require("fs")
 
 exports.getRegister = (req, res) => {
   res.render("Register", {
@@ -59,6 +64,7 @@ exports.newUser = async (req, res) => {
       email,
       password,
     });
+    
 
     await newUser.save((error, save) => {
       if (error){
@@ -68,7 +74,10 @@ exports.newUser = async (req, res) => {
         });
       }
       if (save) {
-        res.send(`welcome to booking ${username}`)
+        // res.send(`welcome to booking ${username}`)
+
+        console.log(save);
+        res.redirect("/user/login")
         
       }
     });
@@ -95,12 +104,12 @@ exports.loginUser = async (req, res) => {
 
   passport.use(
     new LocalStrategy({ usernameField: "username" }, function (
-      username,
+      email,
       password,
       done
     ) {
       userSchema
-        .findOne({email: username })
+        .findOne({ username: username })
         .then((user) => {
           if (!user) {
             error.push({ msg: "Invalid login credentials." });
@@ -124,7 +133,7 @@ exports.loginUser = async (req, res) => {
     res.render("Login", {
       title: "Login to Account",
       user: req.user,
-      error
+      error,
     });
   } else {
     passport.authenticate("local")(req, res, function (err) {
@@ -132,26 +141,85 @@ exports.loginUser = async (req, res) => {
         res.render("Login", {
           title: "Login to Account",
           user: req.user,
-          error
+          error,
         });
       } else {
-        res.redirect("/");
-        console.log("login");
+        res.redirect(`/`);
       }
     });
   }
 };
 
 // logout user
-exports.logOut = (req, res) =>{
+exports.logOut = (req, res) => {
   req.logOut();
-  res.clearCookie('connect.sid', {path: '/'})
-  res.redirect("/user/login")
+  res.clearCookie("connect.sid", { path: "/" });
+  res.redirect("/user/login");
+};
+
+exports.postUser = async (req, res) => {
+  let error = [];
+  let { firstname, lastname, username, email, dob, phone, address, state, country, gender, lg } =
+    req.body;
+  if (
+    !firstname ||
+    !lastname ||
+    !username ||
+    !email ||
+    !dob ||
+    !phone ||
+    !state ||
+    !address ||
+    !gender ||
+    !lg ||
+    !country
+  ) {
+    error.push({ msg: "please filled all field" });
+  }
+  let myfiles = req.files;
+  if (!req.files) {
+    error.push({ msg: "please choose a photo" });
+  }
+
+  try {
+    let newuser = await userSchema.findById(req.params.id);
+    let updateUser = await userSchema.findOneAndUpdate({_id:req.params.id}, {$set: {firstname:firstname || newuser.firstname, lastname:lastname || newuser.lastname, username:username || newuser.username, email:email || newuser.email, dob:dob || newuser.dob, phone:phone || newuser.phone, address:address || newuser.address, state:state ||newuser.state, country:country || newuser.country, gender:gender || newuser.gender, lg:lg || newuser.lg,profileImg:myfiles["profileImg"][0].filename || newuser.profileImg, cv:myfiles["cv"][0].filename  || newuser.cv, signature:myfiles["signature"][0].filename || newuser.signature }})
+    
+
+    if(updateUser){
+     res.redirect("/user/success")
+    }
+  } catch (error) {console.log(error);}
+};
+
+exports.generateReport = (req, res) =>{
+  const option = {format:"A4"}
+  
+  res.render("download",{user:req.user}, (err, html) =>{
+    pdf.create(html, option).toFile("./docs/report.pdf", (err, data) =>{
+      if(err) 
+       console.log(err);
+      else{
+    
+        let datafile = fs.readFileSync("./docs/report.pdf")
+        res.header("content-type", "application/pdf")
+        res.send(datafile)
+      }
+    })
+  })
+
+
 }
 
-
-
-
-
-
-
+exports.getForm = (req, res) => {
+  res.render("account", {
+    title: "User Form",
+    user: req.user,
+  });
+};
+exports.getSuccess = (req, res) => {
+  res.render("success", {
+    title: "success",
+    users: req.user,
+  });
+};
