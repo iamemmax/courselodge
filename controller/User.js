@@ -212,7 +212,7 @@ exports.generateReport = (req, res) =>{
 }
 
 exports.getForm = (req, res) => {
-  res.render("Account", {
+  res.render("account", {
     title: "User Form",
     user: req.user,
   });

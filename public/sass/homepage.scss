@@ -89,8 +89,9 @@ body {
   .logo{
     z-index: 4;
   }
-  .logo h1 {
-    font-size: 30px;
+  .logo a {
+    font-size: 20px;
+    margin-top: 1rem;
   }
 
   ul {
@@ -137,6 +138,7 @@ body {
       display: block;
       // border: 2px solid red;
       margin-left: 0;
+      margin-top: 3rem;
     }
 
    @include pseudo($loc:after, $bottom:-10px){

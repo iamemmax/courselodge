@@ -16,7 +16,7 @@
 
 .Account .myform .cv span { text-align: center; font-size: 14px; color: red; font-weight: 500; width: 100% !important; display: block; font-style: italic; font-family: 'Poppins', sans-serif; }
 
-.Account .myform input[type="radio"] { padding: 10px; margin: 10px; text-transform: capitalize; font-size: 16px; }
+.Account .myform input[type="radio"] { padding: 10px; margin: 10px; text-transform: capitalize; font-size: 16px; z-index: 6; }
 
 .Account .myform p { font-family: 'Poppins', sans-serif; }
 
