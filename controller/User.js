@@ -7,6 +7,7 @@ const ejs = require("ejs")
 const pdf = require("html-pdf")
 const path = require("path");
 const fs = require("fs")
+const bcrypt = require("bcryptjs")
 
 exports.getRegister = (req, res) => {
   res.render("Register", {
@@ -104,13 +105,15 @@ exports.loginUser = async (req, res) => {
 
   passport.use(
     new LocalStrategy({ usernameField: "username" }, function (
-      email,
+      username,
       password,
       done
     ) {
       userSchema
         .findOne({ username: username })
         .then((user) => {
+          console.log(user.password);
+          console.log(password);
           if (!user) {
             error.push({ msg: "Invalid login credentials." });
 
@@ -121,9 +124,26 @@ exports.loginUser = async (req, res) => {
             });
 
             return done(null, false);
-          }
+          }else{
 
-          return done(null, user);
+            bcrypt.compare(password, user.password, (err, isMatch) =>{
+              if(err)console.log(err);
+               if(isMatch){
+                   return done(null, user)
+
+           }else{
+           error.push({msg: "incorrect username or password"})
+           res.render("login", {
+            title: "Login to Account",
+            user: req.user,
+            error,
+          });
+           console.log("incorrect username or password");
+               // return done(null, false, {msg: "incorrect username or password"})
+           }
+       })
+          
+          }
         })
         .catch((err) => console.log(err));
     })
