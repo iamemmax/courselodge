@@ -117,7 +117,7 @@ exports.loginUser = async (req, res) => {
           if (!user) {
             error.push({ msg: "Invalid login credentials." });
 
-            res.render("login", {
+            res.render("Login", {
               title: "Login to Account",
               user: req.user,
               error,
@@ -133,7 +133,7 @@ exports.loginUser = async (req, res) => {
 
            }else{
            error.push({msg: "incorrect username or password"})
-           res.render("login", {
+           res.render("Login", {
             title: "Login to Account",
             user: req.user,
             error,
